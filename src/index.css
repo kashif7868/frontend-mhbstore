@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Body Styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +14,50 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  /* Limit height to viewport */
+
+
+  /* Default text color */
 }
 
+/* Code Block Styles */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #0066cc;
+  /* Link color */
+}
+
+a:hover {
+  text-decoration: underline;
+  /* Optional hover effect */
+}
+
+/* Container Setup */
+.container {
+  max-width: 100vw;
+  /* Prevent container from overflowing */
+  padding: 0 15px;
+  /* Optional padding for layout */
+  margin: 0 auto;
+  /* Center content */
+}
+
+/* Prevent Overflow */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  /* Hide horizontal overflow */
 }

@@ -1,43 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta name="theme-color" content="#000000" />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!-- Website Title -->
+  <title>MHB Store | Luxury within reach...</title>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Meta Description for SEO -->
+  <meta name="description"
+    content="Shop at MHB Store for the best deals on men’s, women’s, and kids' fashion, organic food, health care essentials, and tech gadgets. Quality products with fast shipping and secure payments." />
+
+  <!-- Keywords for SEO -->
+  <meta name="keywords"
+    content="online shopping, men fashion, women fashion, kids clothing, organic food, health care essentials, tech hub, best prices, MHB Store" />
+
+  <!-- Author -->
+  <meta name="author" content="MHB Store Team" />
+
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="MHB Store | One-Stop Shop for Fashion, Tech, and More" />
+  <meta property="og:description"
+    content="Discover amazing deals on men’s and women’s clothing, kids' fashion, organic food, health products, and the latest tech at MHB Store. Shop now for fast delivery and great savings!" />
+  <meta property="og:image" content="https://www.mhbstore.com/images/og-image.png" />
+  <meta property="og:url" content="https://www.mhbstore.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MHB Store" />
+
+  <!-- Twitter Card for Social Media -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MHB Store | Shop Top Deals on Fashion, Food & Tech" />
+  <meta name="twitter:description"
+    content="MHB Store offers unbeatable prices on men’s, women’s, and kids' fashion, organic food, health care essentials, and the latest tech gadgets. Shop now and save big!" />
+  <meta name="twitter:image" content="https://www.mhbstore.com/images/twitter-image.png" />
+
+  <!-- Structured Data for Rich Snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MHB Store",
+      "url": "https://www.mhbstore.com",
+      "logo": "https://www.mhbstore.com/logo192.png",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61566316956196",
+        "https://www.instagram.com/mhbstore",
+        "https://www.twitter.com/mhbstore",
+        "https://www.youtube.com/c/mhbstore"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+",
+        "contactType": "customer service",
+        "areaServed": "Worldwide",
+        "availableLanguage": ["English", "Spanish", "French"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main Street",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "10001",
+        "addressCountry": "US"
+      }
+    }
+  </script>
+
+  <!-- Additional SEO Enhancements -->
+  <meta name="robots" content="index, follow" />
+  <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+  <link rel="canonical" href="https://www.mhbstore.com" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Preload Resources for Performance -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+
+  <!-- Favicon and Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+  <!-- Progressive Web App Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- High Priority Keywords for Better Ranking -->
+  <meta name="subject" content="Best Deals Online for Fashion, Tech, Food, and More" />
+  <meta name="rating" content="General" />
+  <meta http-equiv="Content-Language" content="en" />
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>
