@@ -169,7 +169,7 @@ const OrderDetailsPage = () => {
                           <img
                             src={
                               product.images && product.images.length > 0
-                                ? `http://www.api.mhbstore.com/${product.images[0]}`
+                                ? `https://api.mhbstore.com/${product.images[0]}`
                                 : "default_image_url"
                             }
                             alt={product.productName}

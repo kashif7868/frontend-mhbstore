@@ -191,7 +191,7 @@ const Home = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src={`http://www.api.mhbstore.com/${slide.image}`}
+                src={`https://api.mhbstore.com/${slide.image}`}
                 alt={slide.altText}
                 className="carousel-image"
               />
@@ -221,7 +221,7 @@ const Home = () => {
                   onClick={() => handleCategoryFilterChange(category.categoryName)}
                 >
                   <img
-                    src={`http://www.api.mhbstore.com/${category.image}`}
+                    src={`https://api.mhbstore.com/${category.image}`}
                     alt={category.categoryName}
                     className="category-image"
                   />
@@ -277,10 +277,10 @@ const Home = () => {
                     src={
                       product.images && product.images.length > 0
                         ? hoveredProduct.id === product._id
-                          ? `http://www.api.mhbstore.com/${
+                          ? `https://api.mhbstore.com/${
                               product.images[hoveredProduct.index]
                             }`
-                          : `http://www.api.mhbstore.com/${product.images[0]}`
+                          : `https://api.mhbstore.com/${product.images[0]}`
                         : ""
                     }
                     alt={product.productName}

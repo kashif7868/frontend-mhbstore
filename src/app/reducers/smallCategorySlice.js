@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://www.api.mhbstore.com/api/smallcategory';
+const BASE_URL = 'https://api.mhbstore.com/api/smallcategory';
 
 // Async Thunks
 export const fetchAllSmallCategories = createAsyncThunk(

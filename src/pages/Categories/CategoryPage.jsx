@@ -408,7 +408,7 @@ const CategoryPage = () => {
                       <img
                         src={
                           product.images && product.images.length > 0
-                            ? `http://www.api.mhbstore.com/${
+                            ? `https://api.mhbstore.com/${
                                 product.images[0]
                               }`
                             : ""

@@ -20,7 +20,7 @@ export const submitPartnerForm = createAsyncThunk(
         formDataToSend.append("productImages", file);
       });
 
-      const response = await fetch("http://www.api.mhbstore.com/api/partners", {
+      const response = await fetch("https://api.mhbstore.com/api/partners", {
         method: "POST",
         body: formDataToSend,
       });

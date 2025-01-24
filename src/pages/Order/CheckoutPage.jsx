@@ -356,7 +356,7 @@ const CheckoutPage = () => {
                   <img
                     src={
                       item.images && item.images.length > 0
-                        ? `http://www.api.mhbstore.com/${item.images[0]}`
+                        ? `https://api.mhbstore.com/${item.images[0]}`
                         : "default_image_url"
                     }
                     alt={item.productName}

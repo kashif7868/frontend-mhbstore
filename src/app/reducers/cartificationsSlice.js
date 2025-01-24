@@ -5,7 +5,7 @@ import axios from "axios";
 export const fetchCertifications = createAsyncThunk(
   "certifications/fetchCertifications",
   async () => {
-    const response = await axios.get("http://www.api.mhbstore.com/api/certificates");
+    const response = await axios.get("https://api.mhbstore.com/api/certificates");
     return response.data.data;  // Assuming the data array is in 'data' key
   }
 );

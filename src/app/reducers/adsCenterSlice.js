@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async thunk to fetch ads data from the API
 export const fetchAdsData = createAsyncThunk("ads/fetchData", async () => {
-  const response = await fetch("http://www.api.mhbstore.com/api/ads");
+  const response = await fetch("https://api.mhbstore.com/api/ads");
   const data = await response.json();
   return data; // Assuming the response contains ad data
 });

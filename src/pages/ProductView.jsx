@@ -174,12 +174,12 @@ const ProductView = () => {
                 smallImage: {
                   alt: product.productName,
                   isFluidWidth: true,
-                  src: `http://www.api.mhbstore.com/${product.images[selectedImageIndex]}`,
+                  src: `https://api.mhbstore.com/${product.images[selectedImageIndex]}`,
                   width: isMobile ? 300 : 400,
                   height: isMobile ? 450 : 600,
                 },
                 largeImage: {
-                  src: `http://www.api.mhbstore.com/${product.images[selectedImageIndex]}`,
+                  src: `https://api.mhbstore.com/${product.images[selectedImageIndex]}`,
                   width: isMobile ? 800 : 1200,
                   height: isMobile ? 1200 : 1800,
                 },
@@ -190,7 +190,7 @@ const ProductView = () => {
               {product.images.map((image, index) => (
                 <img
                   key={index}
-                  src={`http://www.api.mhbstore.com/${image}`}
+                  src={`https://api.mhbstore.com/${image}`}
                   alt={`Thumbnail ${index + 1}`}
                   className={`thumbnail ${
                     index === selectedImageIndex ? "thumbnail-active" : ""
@@ -321,7 +321,7 @@ const ProductView = () => {
               onClick={() => navigate(`/product-view-details/${related._id}`)}
             >
               <img
-                src={`http://www.api.mhbstore.com/${related.images[0]}`}
+                src={`https://api.mhbstore.com/${related.images[0]}`}
                 alt={related.productName}
                 className="related-product-img"
               />

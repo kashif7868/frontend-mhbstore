@@ -62,7 +62,7 @@ const Cart = () => {
         {cartItems.map((item) => (
           <div key={item.id + item.selectedSize} className="cart-item">
             <img
-              src={`http://www.api.mhbstore.com/${item.images[0]}`}
+              src={`https://api.mhbstore.com/${item.images[0]}`}
               alt={item.productName}
               className="cart-item-image"
             />

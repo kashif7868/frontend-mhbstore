@@ -35,7 +35,7 @@ const Certifications = () => {
         {certifications.map((cert, index) => (
           <div className="certification-card" key={index}>
             <img
-              src={`http://www.api.mhbstore.com/${cert.image}`}
+              src={`https://api.mhbstore.com/${cert.image}`}
               alt={cert.name}
               className="certification-image"
             />

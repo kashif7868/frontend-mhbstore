@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchSliderImages = createAsyncThunk(
   'slider/fetchSliderImages',
   async () => {
-    const response = await fetch('http://www.api.mhbstore.com/api/homeslider');
+    const response = await fetch('https://api.mhbstore.com/api/homeslider');
     const data = await response.json();
     return data.data; // Return the array of slider images
   }
