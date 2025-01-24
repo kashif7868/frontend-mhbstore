@@ -1,0 +1,199 @@
+/* General Page Styling */
+.peerals-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  background: #f9c74f url("../../assets/images/bg-pearal-page.avif") no-repeat center center / cover; /* Corrected spelling */
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Coins Balance Section */
+.peerals-balance {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.balance-box {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  max-width: 100%;
+  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.balance-dropdown {
+  font-size: 14px;
+  cursor: pointer;
+  color: #f9c74f;
+}
+
+.balance-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.balance-coins {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.balance-icon {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.balance-saves {
+  font-size: 14px;
+  text-align: right;
+}
+
+/* Main Header */
+.peerals-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.peerals-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.peerals-subtitle {
+  font-size: 16px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Rewards Section */
+.peerals-rewards {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.rewards-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.reward-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.reward-icon {
+  font-size: 24px;
+  color: #f9c74f;
+  flex-shrink: 0;
+}
+
+.reward-item p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .balance-box {
+      width: 100%;
+  }
+
+  .peerals-title {
+      font-size: 28px;
+  }
+
+  .peerals-subtitle {
+      font-size: 14px;
+  }
+
+  .balance-values {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .balance-coins {
+      font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .peerals-title {
+      font-size: 24px;
+  }
+
+  .balance-box {
+      padding: 15px;
+  }
+
+  .balance-icon {
+      width: 40px;
+  }
+
+  .reward-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+  }
+
+  .reward-icon {
+      font-size: 20px;
+  }
+
+  .reward-item p {
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .peerals-page {
+      padding: 10px;
+  }
+
+  .balance-box {
+      padding: 10px;
+  }
+
+  .balance-coins {
+      font-size: 18px;
+  }
+
+  .peerals-title {
+      font-size: 20px;
+  }
+
+  .reward-icon {
+      font-size: 18px;
+  }
+
+  .reward-item p {
+      font-size: 12px;
+  }
+}

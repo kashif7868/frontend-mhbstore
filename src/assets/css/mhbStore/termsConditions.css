@@ -1,0 +1,159 @@
+.terms-wrapper {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Banner Section */
+.terms-banner {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url('../../images/slider-images/slider-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+.terms-banner .terms-title {
+  margin: 0;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Content Section */
+.terms-content {
+  width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.terms-intro {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Section Styles */
+.terms-section {
+  margin-bottom: 30px;
+}
+
+.terms-heading {
+  font-size: 1.8rem;
+  color: #000;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.terms-text {
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 10px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.terms-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.terms-link:hover {
+  color: #ffc107; /* Yellow hover effect */
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .terms-banner {
+    padding: 60px 15px;
+  }
+
+  .terms-banner .terms-title {
+    font-size: 2.5rem;
+  }
+
+  .terms-content {
+    padding: 15px;
+  }
+
+  .terms-heading {
+    font-size: 1.6rem;
+  }
+
+  .terms-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .terms-banner {
+    padding: 50px 15px;
+  }
+
+  .terms-banner .terms-title {
+    font-size: 2.2rem;
+  }
+
+  .terms-content {
+    padding: 10px;
+  }
+
+  .terms-heading {
+    font-size: 1.4rem;
+  }
+
+  .terms-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-banner {
+    padding: 40px 10px;
+  }
+
+  .terms-banner .terms-title {
+    font-size: 2rem;
+  }
+
+  .terms-content {
+    padding: 8px;
+  }
+
+  .terms-heading {
+    font-size: 1.2rem;
+  }
+
+  .terms-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

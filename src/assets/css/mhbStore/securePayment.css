@@ -1,0 +1,168 @@
+.secure-payment {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Banner Section */
+.secure-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../../images/slider-images/slider-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 15px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+.secure-banner .secure-title {
+  margin: 0;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Description Styles */
+.secure-payment-desc {
+  font-size: 1.1em;
+  color: #000;
+  text-align: center;
+  max-width: 700px;
+  margin: 20px auto;
+  line-height: 1.6;
+  padding: 0 15px;
+}
+
+/* Secure Section Styles */
+.secure-section {
+  background-color: #fff;
+  border-left: 5px solid #ffc107;
+  padding: 15px 20px;
+  margin: 15px auto;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.secure-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-left-color: #ffc107;
+}
+
+.secure-section h2 {
+  font-size: 1.5em;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.secure-section p {
+  font-size: 1em;
+  color: #333;
+  line-height: 1.7;
+}
+
+.secure-section strong {
+  color: #000;
+}
+
+/* Contact Information */
+.contact-info {
+  font-size: 1em;
+  color: #000;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contact-info a {
+  color: #ffc107;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #d4a105;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .secure-banner .secure-title {
+    font-size: 2rem;
+  }
+
+  .secure-payment-desc {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  .secure-section h2 {
+    font-size: 1.3em;
+  }
+
+  .secure-section p {
+    font-size: 0.95em;
+  }
+
+  .contact-info {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 768px) {
+  .secure-banner .secure-title {
+    font-size: 1.8rem;
+  }
+
+  .secure-section {
+    padding: 10px 15px;
+  }
+
+  .secure-section h2 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .secure-banner .secure-title {
+    font-size: 1.5rem;
+  }
+
+  .secure-section {
+    padding: 10px;
+  }
+
+  .secure-section h2 {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 300px) {
+  .secure-banner .secure-title {
+    font-size: 1.2rem;
+  }
+
+  .secure-payment-desc {
+    font-size: 0.9em;
+  }
+
+  .secure-section h2 {
+    font-size: 1em;
+  }
+
+  .secure-section p {
+    font-size: 0.85em;
+  }
+
+  .contact-info {
+    font-size: 0.85em;
+  }
+}

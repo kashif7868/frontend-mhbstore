@@ -1,0 +1,300 @@
+.contact-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    font-family: "Roboto", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+  
+  /* Banner Section */
+  .contact-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url("../../images/slider-images/slider-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    animation: fadeInDown 1.2s ease-in-out;
+  }
+  
+  .contact-banner h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+  
+  /* Contact Content Section */
+  .contact-contaner-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding: 2rem;
+  }
+  
+  .contact-details-container {
+    padding: 1.5rem;
+  }
+  
+  .contact-details h2 {
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-details h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-details p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-icons a {
+    font-size: 1.8rem;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #ffcc00;
+  }
+  
+  /* Contact Form Section */
+  .contact-form-container {
+    width: 100%;
+    position: relative;
+    left: 8.5em;
+  }
+  
+  .contact-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 40em;
+    margin: 0 auto;
+  }
+  
+  .contact-form .form-heading h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    position: relative;
+  }
+  
+  .input-name,
+  .input-email,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 0.5px solid #ccc;
+    border-radius: 0.3em;
+    outline: none;
+    transition: all 0.3s ease;
+    color: #000;
+  }
+  
+  .input-name:focus,
+  .input-email:focus,
+  textarea:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(221, 177, 3, 0.2);
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .label-input {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+    color: #aaa;
+    background: #f9f9f9;
+    padding: 0 0.25rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .input-name:focus + .label-input,
+  .input-email:focus + .label-input,
+  textarea:focus + .label-input,
+  .input-name:not(:placeholder-shown) + .label-input,
+  .input-email:not(:placeholder-shown) + .label-input,
+  textarea:not(:placeholder-shown) + .label-input {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 0.85rem;
+    color: #ddb103;
+  }
+  
+  .send-button {
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .send-button:hover {
+    background: #ddb103;
+    color: #000;
+  }
+  
+  .send-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Map Section */
+  .map-container {
+    margin: 2rem 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  /* General Styles (Desktop First) */
+/* Already included in your initial CSS */
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .contact-banner h1 {
+      font-size: 2.5rem; /* Reduce the font size for smaller screens */
+    }
+  
+    .contact-contaner-main {
+      grid-template-columns: 1fr; /* Stack the sections vertically */
+      gap: 2rem;
+    }
+  
+    .contact-form-container {
+      left: 0; /* Center align the form */
+      padding: 1rem;
+    }
+  
+    .contact-form {
+      max-width: 90%; /* Allow more room for smaller screens */
+    }
+  
+    .social-icons {
+      justify-content: center; /* Center align social icons */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact-banner {
+      padding: 50px 15px; /* Adjust padding for compact display */
+    }
+  
+    .contact-banner h1 {
+      font-size: 2rem; /* Further reduce font size */
+    }
+  
+    .contact-details h2 {
+      font-size: 1.5rem; /* Adjust headings for smaller devices */
+    }
+  
+    .contact-details h3 {
+      font-size: 1rem;
+    }
+  
+    .contact-form-container {
+      padding: 1rem;
+    }
+  
+    .contact-form .form-heading h3 {
+      font-size: 1.8rem; /* Slightly smaller heading */
+    }
+  
+    .map-container {
+      padding-bottom: 75%; /* Adjust aspect ratio for maps */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-banner h1 {
+      font-size: 1.5rem; /* Make banner text smaller */
+    }
+  
+    .contact-form {
+      max-width: 100%; /* Utilize full width for smaller devices */
+      padding: 1rem;
+    }
+  
+    .form-group {
+      gap: 0.5rem;
+    }
+  
+    .input-name,
+    .input-email,
+    textarea {
+      font-size: 0.9rem; /* Smaller input text for compact screens */
+    }
+  
+    .send-button {
+      font-size: 1rem;
+      padding: 0.6rem 1.5rem; /* Adjust button size */
+    }
+  }
+  
+  @media (max-width: 300px) {
+    .contact-banner h1 {
+      font-size: 1.2rem; /* Final adjustment for ultra-small screens */
+    }
+  
+    .contact-form {
+      padding: 0.5rem;
+    }
+  
+    .send-button {
+      padding: 0.5rem 1rem;
+    }
+  
+    .map-container {
+      padding-bottom: 100%; /* Square map for ultra-small screens */
+    }
+  }
+  

@@ -1,0 +1,171 @@
+/* Wrapper for the entire layout */
+.chatbot-wrapper {
+  position: fixed;
+  bottom: 64px;
+  left: 20px;
+  z-index: 1000;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack the elements vertically */
+}
+
+/* Chatbot logo and the container */
+.chatbot-logo-container {
+  cursor: pointer;
+  margin-bottom: 10px; /* Add some spacing between logo and chatbot */
+}
+
+.chatbot-logo {
+  width: 50px;
+  height: auto;
+}
+
+/* Chatbot container */
+.chatbot-container {
+  position: absolute;
+  bottom: 60px;
+  left: 0; /* Position it to the left side */
+  width: 350px;
+  background: #000; /* Black background for the chat window */
+  border: 1px solid #e69500; /* Golden border for contrast */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
+  padding: 15px;
+  font-family: Arial, sans-serif;
+  color: #fff; /* White text for readability */
+}
+
+.chatbot-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e69500; /* Golden color for header */
+}
+
+.mhb-question-container {
+  max-height: 200px;  /* Ensuring a fixed height for the question container */
+  overflow-y: auto;   /* Enabling scroll when questions overflow */
+  margin-bottom: 15px;
+}
+
+.chatbot-question-list {
+  font-size: 14px;
+  max-height: 100%;   /* Allow the question list to take full available height */
+  overflow-y: auto;   /* In case of more questions */
+}
+
+.chatbot-question {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #333; /* Dark gray background for questions */
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff; /* White text */
+  transition: background 0.3s ease; /* Smooth hover transition */
+}
+
+.chatbot-question:hover {
+  background: #e69500; /* Hover effect with golden color */
+  color: #000; /* Black text on hover for better contrast */
+}
+
+.chatbot-messages {
+  margin-bottom: 15px;
+}
+
+.chatbot-message {
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.chatbot-message.user {
+  background-color: #e69500; /* Golden background for user messages */
+  text-align: left;
+  color: #000; /* Black text for user messages */
+}
+
+.chatbot-message.bot {
+  background-color: #444; /* Darker background for bot messages */
+  text-align: left;
+  color: #fff; /* White text for bot messages */
+}
+
+.chatbot-social-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.chatbot-social-links a {
+  color: #fff; /* White color for social icons */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.whatsapp-icon {
+  color: #25d366;
+}
+
+.facebook-icon {
+  color: #3b5998;
+}
+
+.instagram-icon {
+  color: #c13584;
+}
+
+.chatbot-social-links a:active {
+  color: #000; /* Black color when social icon is clicked */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .chatbot-container {
+    width: 300px; /* Reduce width on smaller screens */
+    font-size: 14px; /* Smaller font size for better fit */
+  }
+
+  .chatbot-logo {
+    width: 40px; /* Make the logo smaller */
+  }
+}
+
+@media (max-width: 768px) {
+  .chatbot-container {
+    width: 270px; /* Even narrower on very small screens */
+  }
+
+  .chatbot-logo {
+    width: 35px; /* Smaller logo on very small screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .chatbot-container {
+    width: 250px; /* Further reduce the width */
+  }
+
+  .chatbot-logo {
+    width: 30px; /* Even smaller logo */
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-container {
+    width: 200px; /* Narrow down further */
+  }
+
+  .chatbot-logo {
+    width: 25px; /* Smallest logo size */
+  }
+}
+
+@media (max-width: 350px) {
+  .chatbot-container {
+    width: 180px; /* Maximum width for very small screens */
+  }
+
+  .chatbot-logo {
+    width: 20px; /* Smallest logo size */
+  }
+}

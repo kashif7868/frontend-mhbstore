@@ -1,0 +1,129 @@
+.certifications-container {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.certifications-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../images/slider-images/slider-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+.certifications-title {
+  margin: 0;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cr-contant-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.certifications-description {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 0 auto;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.certification-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.certification-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: justify;
+  padding: 20px;
+}
+
+.certification-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.certification-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.certification-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.certification-detail {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+@media (max-width: 1024px) and (min-width: 300px) {
+  .certifications-banner {
+    padding: 60px 15px;
+    text-align: center;
+  }
+
+  .certifications-title {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .cr-contant-container {
+    padding: 15px;
+  }
+
+  .certifications-description {
+    font-size: 1rem;
+    max-width: 600px;
+  }
+
+  .certification-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .certification-card {
+    padding: 15px;
+  }
+
+  .certification-image {
+    max-height: 120px;
+    margin-bottom: 15px;
+  }
+
+  .certification-name {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .certification-detail {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,348 @@
+/* Favorites Banner */
+.favorites-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../images/slider-images/slider-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.banner-content h1 {
+  font-size: 3.2rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Favorites List */
+.favorites-list {
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 0 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.favorites-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Prevents action buttons from overflowing */
+}
+
+.favorites-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Sale Tag */
+.favorites-sale-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #000;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.favorites-product-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+/* Product Info */
+.favorites-product-info {
+  text-align: left;
+  margin: 0.5em 0em;
+}
+
+.favorites-product-name {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.favorites-product-name:hover {
+  color: #ff6b81;
+}
+
+.favorites-product-price {
+  font-size: 1rem;
+  color: #000;
+  display: flex;
+  gap: 0.3rem;
+  align-items: baseline;
+}
+
+.favorites-old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.favorites-new-price {
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.favorites-rating {
+  margin: 0.3rem 0;
+}
+
+/* Action Buttons (initially hidden) */
+.favorites-action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Initially hide action buttons */
+  visibility: hidden; /* Ensure action buttons are not clickable when hidden */
+  transition: opacity 0.3s ease, visibility 0s 0.3s; /* Delay visibility change */
+}
+
+.favorites-card:hover .favorites-action-buttons {
+  opacity: 1; /* Show action buttons when the product card is hovered */
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s 0s; /* Remove delay when showing action buttons */
+}
+
+/* Action Buttons */
+.favorites-add-to-cart-btn,
+.favorites-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em 0.4em;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  gap: 0.3em;
+}
+
+.favorites-add-to-cart-btn svg {
+  font-size: 3em;
+}
+
+.favorites-add-to-cart-btn:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+.favorites-remove-btn:hover {
+  color: #da0000;
+  transform: scale(1.05);
+}
+
+/* Empty State */
+.favorites-empty-state {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.favorites-empty-state h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.favorites-empty-state p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.favorites-back-to-home {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #ffc107;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.favorites-back-to-home:hover {
+  background-color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .favorites-banner {
+    padding: 70px 20px;
+  }
+
+  .banner-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .banner-content p {
+    font-size: 1rem;
+  }
+
+  .favorites-card {
+    padding: 0.9rem;
+  }
+
+  .favorites-product-name {
+    font-size: 0.9rem;
+  }
+
+  .favorites-product-price {
+    font-size: 0.95rem;
+  }
+
+  .favorites-add-to-cart-btn,
+  .favorites-remove-btn {
+    font-size: 0.8rem;
+    padding: 0.2em 0.4em;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 0 8px;
+  }
+
+  .favorites-banner {
+    padding: 60px 15px;
+  }
+
+  .banner-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .banner-content p {
+    font-size: 0.95rem;
+  }
+
+  .favorites-card {
+    padding: 0.8rem;
+  }
+
+  .favorites-product-name {
+    font-size: 0.8rem;
+  }
+
+  .favorites-product-price {
+    font-size: 0.9rem;
+  }
+
+  .favorites-add-to-cart-btn,
+  .favorites-remove-btn {
+    font-size: 0.75rem;
+    padding: 0.15em 0.35em;
+  }
+
+  .favorites-empty-state h2 {
+    font-size: 1.8rem;
+  }
+
+  .favorites-empty-state p {
+    font-size: 0.9rem;
+  }
+
+  .favorites-back-to-home {
+    font-size: 0.95rem;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 0 5px;
+  }
+
+  .favorites-banner {
+    padding: 50px 10px;
+  }
+
+  .banner-content h1 {
+    font-size: 2rem;
+  }
+
+  .banner-content p {
+    font-size: 0.85rem;
+  }
+
+  .favorites-card {
+    padding: 0.7rem;
+  }
+
+  .favorites-product-name {
+    font-size: 0.75rem;
+  }
+
+  .favorites-product-price {
+    font-size: 0.85rem;
+  }
+
+  .favorites-add-to-cart-btn,
+  .favorites-remove-btn {
+    font-size: 0.7rem;
+    padding: 0.1em 0.3em;
+  }
+
+  .favorites-empty-state h2 {
+    font-size: 1.6rem;
+  }
+
+  .favorites-empty-state p {
+    font-size: 0.85rem;
+  }
+
+  .favorites-back-to-home {
+    font-size: 0.9rem;
+    padding: 7px 18px;
+  }
+}

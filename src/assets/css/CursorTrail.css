@@ -1,0 +1,86 @@
+/* Cursor trail particle */
+.cursor-trail {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #FFD700 0%, yellow 80%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.5), 0 0 30px rgba(255, 140, 0, 0.3); /* Enhanced fiery glow */
+    animation: trailPulse 0.7s ease-out infinite;
+}
+
+/* Smooth scaling and fading effect */
+@keyframes trailPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.6);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.animation-circle {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  animation: floatUp linear forwards;
+  animation-timing-function: ease-out;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Different Blonde and Blue Variants for Circles */
+.animation-circle:nth-child(3n) {
+  background-color: #FFD700; /* Blonde Yellow */
+  box-shadow: 0 4px 15px yellow; /* Soft shadow */
+}
+
+.animation-circle:nth-child(2n) {
+  background-color: #2f00ff; /* Soft Steel Blue */
+  box-shadow: 0 4px 15px blue; /* Matching blue shadow */
+}
+
+.animation-circle:nth-child(4n) {
+  background-color: #000; /* Light Sky Blue */
+  box-shadow: 0 4px 15px black; /* Soft light blue shadow */
+}
+.animation-circle:nth-child(5n) {
+  background-color: #ff0095; /* Light Sky Blue */
+  box-shadow: 0 4px 15px #FFD700; /* Soft light blue shadow */
+}
+
+/* Floating Animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.1);
+    opacity: 0;
+  }
+}

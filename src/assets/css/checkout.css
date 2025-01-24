@@ -1,0 +1,634 @@
+.checkout-container-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1000px; /* Reduced width */
+  margin: 20px auto;
+}
+
+/* Left Section: Customer Details */
+.product-user-details-container-left {
+  flex: 1 1 35%; /* Reduced width to 35% */
+  margin-right: 15px; /* Reduced margin */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+/* Customer Details Title */
+.product-user-details-container-left h3 {
+  font-size: 20px; /* Reduced font size */
+  margin-bottom: 15px; /* Reduced margin */
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+  padding-bottom: 6px;
+}
+
+/* Form */
+.billing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Reduced gap */
+}
+
+/* Form Group */
+.billing-form-group {
+  position: relative;
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+/* Input and Textarea */
+.billing-input,
+.billing-textarea {
+  width: 100%;
+  font-size: 0.9rem; /* Slightly smaller font size */
+  padding: 8px 10px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Disable Textarea Resize */
+.billing-textarea {
+  resize: none;
+}
+
+/* Label */
+.billing-label,
+.billing-label-textarea {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 0.9rem; /* Slightly smaller font size */
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+.billing-label-textarea {
+  top: 20%;
+}
+
+/* Input Focus */
+.billing-input:focus,
+.billing-textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Label Adjustments on Focus or Input */
+.billing-input:focus + .billing-label,
+.billing-textarea:focus + .billing-label,
+.billing-input:not(:placeholder-shown) + .billing-label,
+.billing-textarea:not(:placeholder-shown) + .billing-label-textarea {
+  top: 0px;
+  font-size: 0.8rem;
+  color: #000;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+/* Right Section: Product Details and Payment */
+.payment-details-add-container-right {
+  flex: 1 1 35%; /* Reduced width to 60% */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Summary */
+.order-summary-container {
+  margin-bottom: 25px; /* Reduced margin */
+}
+
+.order-summary-container h3 {
+  font-size: 20px; /* Reduced font size */
+  margin-bottom: 15px; /* Reduced margin */
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+  padding-bottom: 6px;
+}
+
+/* Product Details */
+.checkout-product-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; /* Reduced gap */
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px; /* Reduced padding */
+  position: relative;
+}
+
+.checkout-product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: 130px; /* Reduced width */
+  background-color: #fff;
+}
+
+.checkout-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Reduced gap */
+  width: 100%;
+}
+
+.checkout-product-info p {
+  margin: 0;
+  font-size: 14px; /* Reduced font size */
+  color: #555;
+  line-height: 1.4;
+}
+
+.checkout-product-info p strong {
+  color: #000;
+  font-weight: 600;
+}
+
+.product-color-circle {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.checkout-product-info .checkout-product-price {
+  font-size: 15px; /* Reduced font size */
+  font-weight: bold;
+  color: #444;
+  margin-top: 8px;
+}
+
+/* Payment Method */
+.payment-method-container {
+  margin-top: 15px; /* Reduced margin */
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.payment-method-container h3 {
+  margin-bottom: 12px; /* Reduced margin */
+  font-size: 16px; /* Reduced font size */
+  font-weight: bold;
+}
+
+.payment-method-container label {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced gap */
+  cursor: pointer;
+  margin-bottom: 8px; /* Reduced margin */
+  font-size: 14px; /* Reduced font size */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  width: 100%;
+}
+
+.payment-method-container label:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+input[type="radio"] {
+  margin: 0;
+  accent-color: #007bff;
+  width: 18px;
+  height: 18px;
+}
+
+.bank-selection {
+  margin-top: 12px; /* Reduced margin */
+}
+
+.bank-selection label {
+  font-size: 14px; /* Reduced font size */
+  margin-bottom: 5px;
+  display: block;
+}
+
+.bank-selection select {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #000;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.bank-selection select:focus {
+  border-color: #007bff;
+}
+
+/* Bank Details */
+.bank-details-container {
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.bank-details-container p {
+  font-size: 14px; /* Reduced font size */
+  color: #333;
+}
+
+.bank-details-container p strong {
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+}
+
+.bank-details-container ol {
+  padding-left: 20px;
+  font-size: 12px; /* Reduced font size */
+  color: #555;
+}
+
+.bank-details-container ol li {
+  margin-bottom: 8px; /* Reduced margin */
+}
+
+.bank-details-container .instructions {
+  margin-top: 15px; /* Reduced margin */
+  font-size: 14px; /* Reduced font size */
+}
+
+.bank-details-container .instructions strong {
+  font-weight: bold;
+}
+
+.bank-details-container .bank-option {
+  margin-bottom: 12px; /* Reduced margin */
+}
+
+.bank-details-container .bank-option p {
+  margin: 0;
+}
+
+.bank-details-container .bank-option span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.bank-details-container .bank-option .account-details {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.bank-details-container .bank-option .account-details .account-info {
+  margin-top: 6px; /* Reduced margin */
+  font-size: 12px;
+  color: #555;
+}
+
+.bank-details-container .bank-selection {
+  margin-top: 15px;
+}
+
+/* Custom styles for file upload icon */
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  width: 100%;
+  margin-top: 15px; /* Reduced margin */
+}
+
+.file-upload-icon {
+  margin-right: 8px;
+  font-size: 20px;
+  color: #007bff;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Style for the file upload container */
+.payment-form-container {
+  margin-top: 15px; /* Reduced margin */
+}
+
+.payment-form-container input[type="file"] {
+  display: none;
+}
+
+.payment-form-container label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.payment-form-container p {
+  margin-top: 8px; /* Reduced margin */
+}
+
+/* Additional styles for the image preview */
+.image-preview-container {
+  margin-top: 15px; /* Reduced margin */
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 250px; /* Reduced max-height */
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-top: 8px; /* Reduced margin */
+}
+
+/* Place Order Button */
+.place-order-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.place-order-button:hover {
+  background-color: #333;
+  transform: scale(1.02);
+}
+@media (max-width: 1024px) {
+  .checkout-container-main {
+    padding: 15px; /* Reduced padding */
+    max-width: 900px; /* Reduced width for better layout */
+  }
+
+  /* Left Section: Customer Details */
+  .product-user-details-container-left {
+    flex: 1 1 40%; /* Reduced width */
+    margin-right: 10px; /* Reduced margin */
+  }
+
+  /* Right Section: Product Details and Payment */
+  .payment-details-add-container-right {
+    flex: 1 1 55%; /* Reduced width */
+  }
+
+  .product-user-details-container-left h3 {
+    font-size: 18px; /* Reduced font size */
+  }
+
+  .billing-form-group {
+    margin-bottom: 15px; /* Reduced margin */
+  }
+
+  .billing-input,
+  .billing-textarea {
+    font-size: 0.9rem; /* Slightly smaller font size */
+    padding: 8px 10px; /* Reduced padding */
+  }
+
+  .billing-label,
+  .billing-label-textarea {
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+
+  .checkout-product-item {
+    gap: 12px; /* Reduced gap */
+    padding-bottom: 10px; /* Reduced padding */
+  }
+
+  .checkout-product-image {
+    max-width: 120px; /* Reduced max-width */
+  }
+
+  .checkout-product-info p {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  .payment-method-container h3 {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .payment-method-container label {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .bank-selection select {
+    padding: 8px; /* Reduced padding */
+  }
+
+  .place-order-button {
+    padding: 10px; /* Reduced padding */
+    font-size: 14px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-container-main {
+    max-width: 100%; /* Full width */
+    padding: 10px; /* Reduced padding */
+  }
+
+  .product-user-details-container-left {
+    flex: 1 1 100%; /* Full width for mobile */
+    margin-right: 0; /* No margin */
+  }
+
+  .payment-details-add-container-right {
+    flex: 1 1 100%; /* Full width for mobile */
+  }
+
+  .product-user-details-container-left h3 {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .billing-form-group {
+    margin-bottom: 12px; /* Reduced margin */
+  }
+
+  .billing-input,
+  .billing-textarea {
+    font-size: 0.8rem; /* Smaller font size */
+    padding: 7px 8px; /* Reduced padding */
+  }
+
+  .billing-label,
+  .billing-label-textarea {
+    font-size: 0.8rem; /* Smaller font size */
+  }
+
+  .checkout-product-item {
+    gap: 10px; /* Reduced gap */
+    padding-bottom: 8px; /* Reduced padding */
+  }
+
+  .checkout-product-image {
+    max-width: 100px; /* Further reduced max-width */
+  }
+
+  .checkout-product-info p {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .payment-method-container h3 {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .payment-method-container label {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  .bank-selection select {
+    padding: 7px; /* Reduced padding */
+  }
+
+  .place-order-button {
+    padding: 8px; /* Reduced padding */
+    font-size: 13px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-container-main {
+    max-width: 100%; /* Full width */
+    padding: 5px; /* Reduced padding */
+  }
+
+  .product-user-details-container-left,
+  .payment-details-add-container-right {
+    flex: 1 1 100%; /* Full width for mobile */
+    margin-right: 0;
+  }
+
+  .product-user-details-container-left h3 {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .billing-form-group {
+    margin-bottom: 10px; /* Reduced margin */
+  }
+
+  .billing-input,
+  .billing-textarea {
+    font-size: 0.7rem; /* Smaller font size */
+    padding: 6px 7px; /* Reduced padding */
+  }
+
+  .billing-label,
+  .billing-label-textarea {
+    font-size: 0.7rem; /* Smaller font size */
+  }
+
+  .checkout-product-item {
+    gap: 8px; /* Reduced gap */
+    padding-bottom: 6px; /* Reduced padding */
+  }
+
+  .checkout-product-image {
+    max-width: 80px; /* Further reduced max-width */
+  }
+
+  .checkout-product-info p {
+    font-size: 10px; /* Smaller font size */
+  }
+
+  .payment-method-container h3 {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .payment-method-container label {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .bank-selection select {
+    padding: 6px; /* Reduced padding */
+  }
+
+  .place-order-button {
+    padding: 6px; /* Reduced padding */
+    font-size: 12px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 300px) {
+  .checkout-container-main {
+    padding: 5px; /* Reduced padding */
+  }
+
+  .product-user-details-container-left,
+  .payment-details-add-container-right {
+    flex: 1 1 100%; /* Full width */
+  }
+
+  .product-user-details-container-left h3 {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .billing-input,
+  .billing-textarea {
+    font-size: 0.6rem; /* Smaller font size */
+    padding: 5px 6px; /* Reduced padding */
+  }
+
+  .checkout-product-item {
+    gap: 6px; /* Further reduced gap */
+    padding-bottom: 5px; /* Reduced padding */
+  }
+
+  .checkout-product-image {
+    max-width: 70px; /* Further reduced max-width */
+  }
+
+  .checkout-product-info p {
+    font-size: 9px; /* Smaller font size */
+  }
+
+  .payment-method-container h3 {
+    font-size: 10px; /* Smaller font size */
+  }
+
+  .payment-method-container label {
+    font-size: 10px; /* Smaller font size */
+  }
+
+  .bank-selection select {
+    padding: 5px; /* Reduced padding */
+  }
+
+  .place-order-button {
+    padding: 5px; /* Reduced padding */
+    font-size: 10px; /* Smaller font size */
+  }
+}

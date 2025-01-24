@@ -1,0 +1,107 @@
+.return-policy-container {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Banner Section */
+.return-policy-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../images/slider-images/slider-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+.return-policy-banner .return-policy-title {
+  margin: 0;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Main Container */
+.rp-main-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 20px;
+  gap: 20px;
+}
+.return-policy-description {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 0 auto;
+  max-width: 800px;
+  line-height: 1.6;
+  text-align: justify;
+}
+/* Return Policy Content */
+.return-policy-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.return-policy-box {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  padding: 20px;
+}
+
+.return-policy-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.return-policy-box h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.return-policy-box p {
+  margin: 0;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .rp-main-container {
+    grid-template-columns: 1fr; /* Single column for better readability */
+  }
+
+  .return-policy-content {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    ); /* Responsive grid */
+  }
+}
+
+@media (max-width: 768px) {
+  .return-policy-banner .return-policy-title {
+    font-size: 2rem;
+  }
+
+  .return-policy-content {
+    grid-template-columns: 1fr;
+  }
+
+  .return-policy-box {
+    padding: 15px;
+  }
+}

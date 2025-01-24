@@ -1,0 +1,357 @@
+.partnership-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+/* Partnership Banner */
+.partnership-banner {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../../images/slider-images/slider-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+  animation: fadeInDown 1.2s ease-in-out;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+.partnership-banner h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Main Content Section */
+.partnership-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+/* How to Partner Section */
+.how-to-partner {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.how-to-partner h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #f39c12;
+}
+
+.how-to-partner ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Partner Form Section */
+/* Partner Form Container */
+.partner-form-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;  /* Reduced padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;  /* Reduced max-width */
+  margin: 0 auto;
+}
+
+/* Form Title */
+.partner-form-container h2 {
+  font-size: 2rem;  /* Reduced font size */
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Partner Form */
+.partner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;  /* Reduced gap between form fields */
+}
+
+/* Form Fields */
+.form-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 0.8rem;  /* Reduced padding */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;  /* Smaller font size */
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  border-color: #f39c12;
+  outline: none;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+/* Label Styling */
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  background-color: #fff;
+  padding: 0 8px;
+  font-size: 0.9rem;  /* Smaller font size */
+  color: #333;
+  font-weight: 500;
+  transform: translateY(-50%);
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.input-field:focus + .input-label,
+.textarea-field:focus + .input-label {
+  top: -1px;
+  font-size: 0.8rem;
+  color: #f39c12;
+}
+
+.input-field:not(:placeholder-shown) + .input-label,
+.textarea-field:not(:placeholder-shown) + .input-label {
+  top: -18px;
+  font-size: 0.8rem;
+  color: #f39c12;
+}
+
+/* File Upload Button Styling */
+input[type="file"] {
+  display: none;
+}
+.file-upload-label {
+  font-size: 1rem;  /* Smaller font size */
+  background-color: #000;
+  color: white;
+  padding: 0.8rem 1.8rem;  /* Reduced padding */
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;  /* Reduced gap */
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.file-upload-label:hover {
+  background-color: #e67e22;
+}
+
+/* Product Image Preview Section */
+.product-image-previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.product-image-preview {
+  position: relative;
+  display: inline-block;
+  width: 120px;  /* Reduced preview size */
+  height: 120px;  /* Reduced preview size */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-image-preview:hover .product-preview-img {
+  transform: scale(1.05);  /* Smaller hover zoom */
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-image-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Partner Image Preview */
+.partner-image-preview {
+  position: relative;
+  display: inline-block;
+  width: 150px;  /* Reduced partner image preview */
+  height: 150px;  /* Reduced partner image preview */
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.partner-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.partner-image-preview:hover .partner-preview-img {
+  transform: scale(1.05);  /* Smaller hover zoom */
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-image-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Submit Button */
+.submit-partner-btn {
+  background-color: #000;
+  color: white;
+  padding: 1rem 2rem;  /* Reduced padding */
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;  /* Smaller font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width button */
+  margin-top: 1.5rem;
+}
+
+.submit-partner-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.submit-partner-btn:hover:enabled {
+  background-color: #e67e22;
+}
+/* Media Query for screens between 1024px and 300px */
+@media (max-width: 1024px) and (min-width: 300px) {
+
+  /* Partnership Container */
+  .partnership-container {
+    padding: 1rem;
+  }
+
+  /* Partnership Banner */
+  .partnership-banner {
+    padding: 80px 20px;
+  }
+
+  .partnership-banner h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  /* Main Content Section */
+  .partnership-content {
+    grid-template-columns: 1fr; /* Stacks columns vertically on smaller screens */
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  /* How to Partner Section */
+  .how-to-partner h2 {
+    font-size: 2rem;
+  }
+
+  /* Partner Form Section */
+  .partner-form-container {
+    padding: 1.5rem;
+    max-width: 100%; /* Full width */
+  }
+
+  .partner-form-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .partner-form {
+    gap: 1.2rem; /* Smaller gap between fields */
+  }
+
+  /* Form Fields */
+  .input-field,
+  .textarea-field {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  /* File Upload Button */
+  .file-upload-label {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Product Image Preview Section */
+  .product-image-previews {
+    gap: 0.8rem;
+  }
+
+  .product-image-preview {
+    width: 100px; /* Smaller preview */
+    height: 100px;
+  }
+
+  .product-preview-img {
+    object-fit: cover;
+  }
+
+  /* Partner Image Preview */
+  .partner-image-preview {
+    width: 120px;
+    height: 120px;
+  }
+
+  .partner-preview-img {
+    object-fit: cover;
+  }
+
+  /* Submit Button */
+  .submit-partner-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
