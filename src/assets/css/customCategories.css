@@ -852,130 +852,143 @@
 
 
 /* Product Card */
+
+/* Product Card */
 .product-cart {
+  width: 100%;
   background-color: #ffffff;
-  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
   position: relative;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-cart:hover {
-  transform: translateY(-5px);
-}
 
 .product-cart img {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 0.5rem;
+  width: 100%;
+  height: 300px;
   object-fit: cover;
+  border-bottom: 1px solid #f1f1f1;
+  transition: opacity 0.3s ease;
+}
+.product-cart:hover img {
+  opacity: 0.7;
 }
 
 .sale-tag {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #000;
-  color: #fff;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-  border-radius: 4px;
-}
-.product-link-views-details{
-  text-decoration: none;
+  top: 5px;
+  left: 5px;
+  background-color: #ffe260;
   color: #000;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 2;
 }
+
 .product-info {
   text-align: left;
-  margin: 0.5em 0em;
+  margin-top: 30px;
 }
 
 .product-name {
-  font-size: 0.85rem;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 15px;
   color: #333;
 }
 
 .product-details {
-  font-size: 0.75rem;
-  color: #777;
+  font-size: 18px;
+  color: #333;
 }
 
 .price {
-  font-size: 1rem;
-  color: #000;
-  display: flex;
-  gap: 0.3rem;
-  align-items: baseline;
-}
-
-.old-price {
-  text-decoration: line-through;
-  color: #888;
-  font-size: 0.8rem;
-}
-
-.new-price {
-  font-size: 1rem;
-  color: #000;
-  font-weight: bold;
-}
-
-.rating {
-  margin: 0.3rem 0;
-}
-
-.action-buttons {
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  transform: translateX(-50%);
-  opacity: 0; /* Initially hide action buttons */
-  visibility: hidden; /* Ensure action buttons are not clickable when hidden */
-  transition: opacity 0.3s ease, visibility 0s 0.3s; /* Delay visibility change to make opacity transition smooth */
 }
 
-.quick-add-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2em 0.4em;
-  background-color: #ffffff;
-  color: #000000;
-  border:none;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  gap: 0.3em;
+.old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #888;
 }
 
-.quick-add-btn svg {
-  font-size: 3em;
-}
-
-.quick-add-btn:hover {
+.new-price {
+  font-size: 16px;
+  font-weight: bold;
+  background-color:#ffe260;
   color: #000;
-  transform: scale(1.05);
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-.quick-add-btn:active {
-  transform: scale(0.95);
+.rating {
+  padding-left: 15px;
+  font-size: 14px;
+  color: #f5a623;
 }
+
+
 .wishlist-icon {
-  font-size: 1.5em;
-  color: #333;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 6px 6px;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+  display: block;
 }
 
 .wishlist-icon:hover {
   color: #ffd310;
   transform: scale(1.1);
+}
+
+.apply-peerals-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: #ffbc03;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-peerals-btn:hover {
+  background-color: #e0b233;
+}
+
+/* Out of Stock */
+.out-of-stock {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #ff4c4c;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+/* Center the "No products available" message */
+.no-products-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  flex-direction: column; /* Stack if you want to add multiple lines */
 }
 
 /* Responsive Styles */

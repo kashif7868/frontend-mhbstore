@@ -13,7 +13,10 @@ const FavoriteList = () => {
   const favoriteIds = useSelector((state) => state.favorites); // Array of favorite product IDs
   const products = useSelector((state) => state.product?.products || []); // Get all products from Redux store
   const [favoriteProducts, setFavoriteProducts] = useState([]); // Local state to hold favorite products
-  const [hoveredProduct, setHoveredProduct] = useState({ id: null, index: null }); // State to track hovered product
+  const [hoveredProduct, setHoveredProduct] = useState({
+    id: null,
+    index: null,
+  }); // State to track hovered product
 
   useEffect(() => {
     // Update favorite products whenever favoriteIds or products change
@@ -83,17 +86,8 @@ const FavoriteList = () => {
                     <h5 className="favorites-product-name">
                       {product.productName}
                     </h5>
-                    <div className="favorites-product-price">
-                      {product.oldPrice && (
-                        <span className="favorites-old-price">
-                          ₨ <del>{product.oldPrice}</del>
-                        </span>
-                      )}
-                      <span className="favorites-new-price">
-                        ₨ {product.price}
-                      </span>
-                    </div>
                     <div className="favorites-rating">
+                    Review
                       {[...Array(5)].map((_, i) => (
                         <FaStar
                           key={i}
@@ -104,6 +98,16 @@ const FavoriteList = () => {
                           }
                         />
                       ))}
+                    </div>
+                    <div className="favorites-product-price">
+                      <span className="favorites-new-price">
+                        ₨ {product.price}
+                      </span>
+                      {product.oldPrice && (
+                        <span className="favorites-old-price">
+                          ₨ <del>{product.oldPrice}</del>
+                        </span>
+                      )}
                     </div>
                   </div>
                 </Link>

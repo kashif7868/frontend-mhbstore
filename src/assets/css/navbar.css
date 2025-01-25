@@ -2,10 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2em 4em;
+  padding: 8px 4em;
   background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 0.0625rem 0.3125rem rgba(0, 0, 0, 0.1);
   position: relative;
   top: 0;
   z-index: 1000;
@@ -343,51 +341,25 @@
 
 /* Button Styling */
 .signIn-signUp-btn {
-  padding: 10px 24px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg, #f3c600, #facc00);
-  font-weight: 700;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  display: inline-block;
-  text-align: center;
-  z-index: 0;
+  font-size: 18px;
+}
+.signIn-signUp-btn {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 18px;
+}
+.signIn-signUp-btn .navbar-icons {
+  font-size: 24px; /* Adjusted icon size */
+  color: #333;
+  transition: color 0.3s ease;
 }
 
-/* Expanding Background Effect on Hover */
-.signIn-signUp-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 30px;
-  background-color: #333;
-  color: #fff;
-  z-index: -1;
-  transition: width 0.4s ease;
-}
-
-.signIn-signUp-btn:hover::before {
-  width: 100%;
-}
 
 /* Hover and Active States */
-.signIn-signUp-btn:hover {
-  color: #fff;
-  box-shadow: 0 8px 15px rgba(255, 165, 0, 0.2);
-}
-
-.signIn-signUp-btn:active {
-  background: linear-gradient(45deg, #ffd000, #ffd000);
-  box-shadow: inset 4px 4px 8px #ffd000,
-    inset -4px -4px 8px #ffd000;
-  transform: scale(0.95);
-}
 
 /* Profile Container */
 .profile-container {
@@ -967,71 +939,86 @@
 
 /* Navbar Container */
 .navbar-container {
-  background-color: #1e1e1e;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
-  width: 100%;
-  height: 3em;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
+  padding: 15px 0px;
+  border-bottom: 1px solid #ccc;
+  flex: 1;
   position: sticky;
   top: 0;
   z-index: 999;
 }
-
-/* Navigation links container */
-.nav-links {
-  display: flex;
-  text-decoration: none;
+.nav-links{
   list-style: none;
-  gap: 20px;
-  font-size: 17px;
-  align-items: center;
-  padding: 0;
+  display: flex;
   margin: 0;
+  padding: 0;
+}
+.category-item-list {
+  margin-right: 30px;
+  position: relative;
+  cursor: pointer;
+  
+}
+.category-item-list a{
+  text-decoration: none;
+}
+.category-link-btn,
+.home-link-text {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
 }
 
-.nav-links li {
+.category-link-btn:hover,
+.home-link-text:hover {
+  color: #dfb600;
+}
+
+.home-link-text::after,
+.category-link-btn::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #facc00;
+  position: absolute;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s ease;
+}
+
+.home-link-text:hover::after,
+.category-link-btn:hover::after {
+  width: 100%;
+}
+
+/* Navbar Icons */
+.navbar-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-icons a {
+  font-size: 22px;
+  color: #333;
+  transition: color 0.3s ease;
   position: relative;
 }
 
-/* Styling for the category button */
-.nav-links .category-link-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: none;
-  padding: 10px 15px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease;
+.navbar-icons a:hover {
+  color: #01cf57;
 }
 
-/* Styling for the category image */
-.category-link-image {
-  width: 100%;
-  max-width: 20px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
 
-/* Styling for the category name */
-.category-name {
-  font-size: 14px;
-}
 
-/* Active class for nav-links */
-.nav-links.active {
-  flex-direction: column;
-  gap: 15px;
-}
 
 /* Hamburger menu */
 .hamburger {
@@ -1040,58 +1027,10 @@
   cursor: pointer;
   position: absolute;
   right: 20px;
-  color: #fff;
+  color: #000;
   z-index: 2000;
 }
 
-/* Category item list styling */
-.nav-links .category-item-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.nav-links .category-item-list a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 10px 10px;
-  border-radius: 5px;
-  color: #fff;
-  transition: all ease-in-out;
-}
-.nav-links .category-item-list a .home-link-text {
-  font-size: 16px;
-  width: 100%;
-  /* background: url("../images/slider-images/wild-honey.png") no-repeat
-    center center;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text; */
-  background-size: cover;
-}
-.home-link-icon {
-  margin-right: 6px;
-  font-size: 25px;
-}
-.nav-links .category-item-list a:hover {
-  transform: scale(0.95);
-  background-color: #3c3c3c94;
-  color: white;
-}
-
-/* Category item container styling */
-.category-item-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Hover effect for category button */
-.category-link-btn:hover {
-  color: #fff;
-  background-color: #3c3c3c94;
-  border-radius: 6px;
-}
 
 @media (max-width: 720px) {
   .header-container {
@@ -1099,7 +1038,9 @@
     align-items: center;
     position: relative;
   }
-
+  .navbar-container{
+    padding: 22px;
+  }
   .right-icons {
     justify-content: center;
     gap: 15px;
@@ -1117,13 +1058,13 @@
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: #1e1e1e;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    background-color:#fff;
+    box-shadow: 50px 50px 100px rgb(255 203 14);
     position: fixed;
     top: 100px;
     left: -100%;
     height: 100%;
-    width: 80%;
+    width: 100%;
     max-width: 300px;
     z-index: 100011;
     padding: 40px 20px;
@@ -1133,14 +1074,15 @@
 
   .nav-links.active {
     display: flex;
-    left: 0;
-    top: 24px;
+    left: 0px;
+    top: 0px;
   }
 
   .nav-links li {
     width: 100%;
     position: relative;
-    top: 40px;
+    top: 0px;
+    border-bottom: 1px solid #484848;
   }
 
   .nav-links li a,
@@ -1149,7 +1091,7 @@
     padding: 12px 20px;
     text-align: left;
     font-size: 14px;
-    color: #fff;
+    color: #333;
     display: flex;
     justify-content: space-between;
     cursor: pointer;

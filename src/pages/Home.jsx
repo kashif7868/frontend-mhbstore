@@ -13,7 +13,6 @@ import { fetchSliderImages } from "../app/reducers/sliderSlice";
 import { fetchCategories } from "../app/reducers/categorySlice";
 import { getAllProducts } from "../app/reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../app/actions/actionsCart";
 import { IoSearchOutline } from "react-icons/io5";
 import {
   addToFavorites,
@@ -37,7 +36,6 @@ const Home = () => {
   );
   const products = useSelector((state) => state.product?.products || []);
   const favorites = useSelector((state) => state.favorites);
-  const peerals = useSelector((state) => state.user?.peerals || 0);
 
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,16 +102,6 @@ const Home = () => {
     setHoveredProduct({ id: null, index: 0 });
   };
 
-  const handleApplyPeerals = (product) => {
-    const discount = Math.min(peerals, product.price || 0);
-    const newPrice = (product.price || 0) - discount;
-    toast.success(
-      `You applied ${discount} PKR in peerals! New price: ₨ ${newPrice}`
-    );
-    dispatch(
-      addToCart({ ...product, price: newPrice, appliedDiscount: discount })
-    );
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -169,17 +157,31 @@ const Home = () => {
   }, [handleScroll]); // Now `handleScroll` is included in dependencies
 
   return (
-    <div>
+    <div className="home pag">
       <div className="carousel-container">
         <Slider
           dots={true}
           infinite={true}
           speed={500}
-          slidesToShow={1}
+          slidesToShow={2}  // Show two images per row
           slidesToScroll={1}
           autoplay={true}
           autoplaySpeed={3000}
           arrows={true}
+          responsive={[
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2, // Two slides on medium screens
+              },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1, // One slide on smaller screens
+              },
+            },
+          ]}
         >
           {images.map((slide) => (
             <motion.div
@@ -191,15 +193,14 @@ const Home = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src={`https://api.mhbstore.com/${slide.image}`}
-                alt={slide.altText}
+                src={`https://api.mhbstore.com/${slide.image}`} // Dynamic image URL
+                alt={slide.altText} // Alt text for the image
                 className="carousel-image"
               />
             </motion.div>
           ))}
         </Slider>
       </div>
-
       <section
         className="categori-sub-navbar-container"
         ref={categoriesSubNavbarScroll.containerRef}
@@ -217,8 +218,12 @@ const Home = () => {
             {categories.map((category) => (
               <div key={category._id} className="category-item">
                 <button
-                  className={selectedCategory === category.categoryName ? "active" : ""}
-                  onClick={() => handleCategoryFilterChange(category.categoryName)}
+                  className={
+                    selectedCategory === category.categoryName ? "active" : ""
+                  }
+                  onClick={() =>
+                    handleCategoryFilterChange(category.categoryName)
+                  }
                 >
                   <img
                     src={`https://api.mhbstore.com/${category.image}`}
@@ -271,7 +276,16 @@ const Home = () => {
                 {product.discount && (
                   <span className="sale-tag">SALE {product.discount}%</span>
                 )}
-
+                <span
+                  className="wishlist-icon wishlist-icon-list"
+                  onClick={() => handleFavoriteToggle(product)}
+                >
+                  {isFavorite(product._id) ? (
+                    <MdFavorite style={{ color: "red" }} />
+                  ) : (
+                    <MdFavoriteBorder />
+                  )}
+                </span>
                 <Link to={`/product-view-details/${product._id}`}>
                   <img
                     src={
@@ -289,15 +303,8 @@ const Home = () => {
 
                   <div className="product-info">
                     <h5 className="product-name">{product.productName}</h5>
-                    <div className="price">
-                      {product.oldPrice && (
-                        <span className="old-price">
-                          ₨ <del>{product.oldPrice}</del>
-                        </span>
-                      )}
-                      <span className="new-price">₨ {product.price}</span>
-                    </div>
                     <div className="rating">
+                      Review
                       {[...Array(5)].map((_, i) => (
                         <FaStar
                           key={i}
@@ -312,30 +319,16 @@ const Home = () => {
                     {product.stock <= 0 && (
                       <div className="out-of-stock">Product out of stock</div>
                     )}
+                    <div className="price">
+                      <span className="new-price">₨ {product.price}</span>
+                      {product.oldPrice && (
+                        <span className="old-price">
+                          ₨ <del>{product.oldPrice}</del>
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </Link>
-
-                <div className="action-buttons ">
-                  <span
-                    className="wishlist-icon wishlist-icon-list"
-                    onClick={() => handleFavoriteToggle(product)}
-                  >
-                    {isFavorite(product._id) ? (
-                      <MdFavorite style={{ color: "red" }} />
-                    ) : (
-                      <MdFavoriteBorder />
-                    )}
-                  </span>
-
-                  {peerals > 0 && product.usePeeralsDiscount && (
-                    <button
-                      className="apply-peerals-btn"
-                      onClick={() => handleApplyPeerals(product)}
-                    >
-                      Use {peerals} Peerals
-                    </button>
-                  )}
-                </div>
               </motion.div>
             ))
           )}

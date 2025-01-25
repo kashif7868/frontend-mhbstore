@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import mhbLogo from "../assets/images/logo.png";
 import { FaUserCircle } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { FaBars, FaTimes, FaHome } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 import pakistanIcon from "../assets/icons/pakistan.png";
 import useScrollTrigger from "../hooks/useScrollTrigger";
 import "../assets/css/navbar.css";
-import { FcHome } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import PearlsIcon from "../assets/icons/peeral.png";
@@ -84,6 +84,9 @@ const Navbar = () => {
         <div className="right-icons">
           <div className="locations-container">
             <img src={pakistanIcon} alt="Pakistan Flag" className="flag-icon" />
+            <div className="navbar-icons-items">
+              <span className="language-counter">Urdu</span>
+            </div>
           </div>
 
           {/* Pearls Section for User */}
@@ -101,13 +104,12 @@ const Navbar = () => {
                 <span className="favorite-badge-dot">{favoriteCount}</span>
               )}
               <MdOutlineFavoriteBorder className="fav-icon" />
-              <span>Wish List</span>
             </Link>
           </div>
 
           {/* Cart Icon */}
           <div className="cart-icon-wrapper">
-            <FaCartShopping className="icon" onClick={handleCartClick} />
+            <HiOutlineShoppingBag className="icon" onClick={handleCartClick} />
             {cartCount > 0 && (
               <span className="cart-badge-dot">{cartCount}</span>
             )}
@@ -155,7 +157,7 @@ const Navbar = () => {
           ) : (
             <div className="profile-container">
               <Link to="/signIn" className="signIn-signUp-btn">
-                Sign In
+                <FiUser className="navbar-icons " />
               </Link>
             </div>
           )}
@@ -178,7 +180,6 @@ const Navbar = () => {
         <ul className={`nav-links ${isOpen ? "active" : ""}`}>
           <li className="category-item-list">
             <Link to="/">
-              <FcHome className="home-link-icon" />
               <span className="home-link-text"> Home</span>
             </Link>
           </li>
@@ -186,14 +187,14 @@ const Navbar = () => {
             categories.map((category) => (
               <li key={category.id} className="category-item-list">
                 <div className="category-item-container">
-                  <button
+                  <span
                     className="category-link-btn"
                     onClick={() => handleCategoryClick(category.id)}
                   >
                     <span className="category-name">
                       {category.categoryName}
                     </span>
-                  </button>
+                  </span>
                 </div>
               </li>
             ))

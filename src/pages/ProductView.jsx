@@ -288,7 +288,7 @@ const ProductView = () => {
           {/* For Food Category: Display Weight if available */}
           {product.categoryName === "Food" && product.weight && (
             <div className="product-weight-section">
-              <p>Weight: {product.weight} kg</p>
+              <p>Weight: {product.weight} Grams</p>
             </div>
           )}
         </div>

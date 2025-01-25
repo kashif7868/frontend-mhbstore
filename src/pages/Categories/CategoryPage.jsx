@@ -6,7 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { fetchCategoryById } from "../../app/reducers/categorySlice";
 import { fetchSubCategories } from "../../app/reducers/subCategorySlice";
 import { fetchAllSmallCategories } from "../../app/reducers/smallCategorySlice";
-import { addToFavorites, removeFromFavorites } from "../../app/reducers/favoritesSlice";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../app/reducers/favoritesSlice";
 import { MdGridOn, MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
@@ -30,7 +33,9 @@ const CategoryPage = () => {
   const [maxValue, setMaxValue] = useState(10000);
 
   // Redux state
-  const selectedCategory = useSelector((state) => state.category.selectedCategory);
+  const selectedCategory = useSelector(
+    (state) => state.category.selectedCategory
+  );
   const products = useSelector((state) => state.product.products);
   const loading = useSelector((state) => state.product.loading);
   const isFavorite = (productId) => {
@@ -405,12 +410,25 @@ const CategoryPage = () => {
                     }`}
                   >
                     <Link to={`/product-view-details/${product._id}`}>
+                      {product.discount && (
+                        <span className="sale-tag">
+                          SALE {product.discount}%
+                        </span>
+                      )}
+                      <span
+                        className="wishlist-icon"
+                        onClick={() => handleFavoriteToggle(product)}
+                      >
+                        {isFavorite(product._id) ? (
+                          <MdFavorite style={{ color: "red" }} />
+                        ) : (
+                          <MdFavoriteBorder />
+                        )}
+                      </span>
                       <img
                         src={
                           product.images && product.images.length > 0
-                            ? `https://api.mhbstore.com/${
-                                product.images[0]
-                              }`
+                            ? `https://api.mhbstore.com/${product.images[0]}`
                             : ""
                         }
                         alt={product.productName}
@@ -420,15 +438,8 @@ const CategoryPage = () => {
                         <h5 className="product-name">
                           {product.productName || "Unnamed Product"}
                         </h5>
-                        <div className="price">
-                          {product.oldPrice && (
-                            <span className="old-price">
-                              ₨ <del>{product.oldPrice}</del>
-                            </span>
-                          )}
-                          <span className="new-price">₨ {product.price}</span>
-                        </div>
                         <div className="rating">
+                          Review
                           {[...Array(5)].map((_, i) => (
                             <FaStar
                               key={i}
@@ -440,6 +451,14 @@ const CategoryPage = () => {
                             />
                           ))}
                         </div>
+                        <div className="price">
+                          <span className="new-price">₨ {product.price}</span>
+                          {product.oldPrice && (
+                            <span className="old-price">
+                              ₨ <del>{product.oldPrice}</del>
+                            </span>
+                          )}
+                        </div>
                         {product.productStock <= 0 && (
                           <div className="out-of-stock">
                             Product out of stock
@@ -447,18 +466,6 @@ const CategoryPage = () => {
                         )}
                       </div>
                     </Link>
-                    <div className="action-buttons">
-                      <span
-                        className="wishlist-icon"
-                        onClick={() => handleFavoriteToggle(product)}
-                      >
-                        {isFavorite(product._id) ? (
-                          <MdFavorite style={{ color: "red" }} />
-                        ) : (
-                          <MdFavoriteBorder />
-                        )}
-                      </span>
-                    </div>
                   </div>
                 ))
               )}

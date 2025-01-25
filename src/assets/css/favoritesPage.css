@@ -40,43 +40,47 @@
 
 .favorites-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  padding: 0 20px;
-  width: 100%;
-  justify-content: center;
+  justify-items: center;
 }
 
 .favorites-card {
+  width: 100%;
   background-color: #ffffff;
-  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
   position: relative;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* Prevents action buttons from overflowing */
 }
-
-.favorites-card:hover {
-  transform: translateY(-5px);
+.favorites-card a {
+  text-decoration: none;
 }
 
 /* Sale Tag */
 .favorites-sale-tag {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #000;
-  color: #fff;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-  border-radius: 4px;
+  top: 5px;
+  left: 5px;
+  background-color: #f5e6a2;
+  color: #000;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 2;
 }
 
 .favorites-product-image {
   width: 100%;
-  height: auto;
-  margin-bottom: 0.5rem;
+  height: 300px;
   object-fit: cover;
+  border-bottom: 1px solid #f1f1f1;
+  transition: opacity 0.3s ease;
+}
+.favorites-product-image:hover{
+  opacity: 0.7;
 }
 
 /* Product Info */
@@ -86,91 +90,57 @@
 }
 
 .favorites-product-name {
-  font-size: 0.85rem;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 15px;
   color: #333;
 }
-
 .favorites-product-name:hover {
-  color: #ff6b81;
+  opacity: 0.7;
 }
 
 .favorites-product-price {
-  font-size: 1rem;
-  color: #000;
-  display: flex;
-  gap: 0.3rem;
-  align-items: baseline;
-}
-
-.favorites-old-price {
-  text-decoration: line-through;
-  color: #888;
-  font-size: 0.8rem;
-}
-
-.favorites-new-price {
-  font-size: 1rem;
-  color: #000;
-  font-weight: bold;
-}
-
-.favorites-rating {
-  margin: 0.3rem 0;
-}
-
-/* Action Buttons (initially hidden) */
-.favorites-action-buttons {
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  border-top: 1px solid #eee;
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0; /* Initially hide action buttons */
-  visibility: hidden; /* Ensure action buttons are not clickable when hidden */
-  transition: opacity 0.3s ease, visibility 0s 0.3s; /* Delay visibility change */
 }
 
-.favorites-card:hover .favorites-action-buttons {
-  opacity: 1; /* Show action buttons when the product card is hovered */
-  visibility: visible;
-  transition: opacity 0.3s ease, visibility 0s 0s; /* Remove delay when showing action buttons */
+.favorites-old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #888;
 }
 
-/* Action Buttons */
-.favorites-add-to-cart-btn,
-.favorites-remove-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2em 0.4em;
-  background-color: #ffffff;
-  color: #000000;
-  border: none;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  gap: 0.3em;
-}
-
-.favorites-add-to-cart-btn svg {
-  font-size: 3em;
-}
-
-.favorites-add-to-cart-btn:hover {
+.favorites-new-price {
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f5e6a2;
   color: #000;
-  transform: scale(1.05);
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-.favorites-remove-btn:hover {
-  color: #da0000;
-  transform: scale(1.05);
+.favorites-rating {
+  padding-left: 15px;
+  font-size: 14px;
+  color: #f5a623;
 }
+
+
+
+.favorites-remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 6px 6px;
+  cursor: pointer;
+  z-index: 3;
+  display: block;
+}
+
 
 /* Empty State */
 .favorites-empty-state {

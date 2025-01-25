@@ -1,6 +1,6 @@
 .footer-container {
-  background-color: #121212; /* Updated background color */
-  color: #fff; /* Updated text color */
+  background-color: #fff; /* Background color */
+  color: #333; /* Text color */
   padding: 40px 20px;
   font-family: "Arial", sans-serif;
   margin-top: 40px;
@@ -30,13 +30,13 @@
   margin-right: 10px;
 }
 .social-links a .social-icons {
-  color: #fff;
+  color: #333;
   font-size: 20px;
   text-decoration: none;
 }
 
 .social-links a .social-icons:hover {
-  color: #f39c12; /* Golden color on hover */
+  color: #f39c12; /* Hover color remains same */
 }
 
 /* Payment Icons */
@@ -45,7 +45,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #fff;
   padding: 10px 5px;
   border-radius: 10px;
 }
@@ -70,10 +69,11 @@
   content: "";
   width: 80px;
   height: 2px;
-  background-color: #f39c12; /* Golden underline */
+  background-color: #333; /* Same color as text */
   display: block;
   margin-top: 5px;
 }
+
 /* Category List */
 .footer-category-list {
   list-style: none;
@@ -95,14 +95,15 @@
 }
 
 .footer-category-name {
-  color: #ccc;
+  color: #333; /* Same color as text */
   font-size: 16px;
   transition: color 0.3s ease;
 }
 
 .footer-category-link-btn:hover .footer-category-name {
-  color: #f39c12; /* Hover color */
+  color: #f39c12; /* Hover color remains same */
 }
+
 /* Footer Section Text and Links */
 .footer-column p,
 .footer-column ul {
@@ -122,7 +123,7 @@
 
 .footer-column ul li a {
   text-decoration: none;
-  color: #ccc; /* Lightened link color for better contrast */
+  color: #333; /* Same color as text */
   font-size: 16px;
   position: relative;
   transition: color 0.3s ease;
@@ -130,7 +131,7 @@
 
 .footer-column ul li a::before {
   content: "→ ";
-  color: #f39c12;
+  color: #f39c12; /* Same color as text */
   transition: transform 0.3s ease, color 0.3s ease;
   position: absolute;
   left: -20px;
@@ -138,7 +139,7 @@
 }
 
 .footer-column ul li a:hover {
-  color: #f39c12; /* Hover color */
+  color: #f39c12; /* Hover color remains same */
   cursor: pointer;
 }
 
@@ -183,12 +184,13 @@
   text-align: center;
   margin-top: 20px;
 }
+
 /* Mobile Styles (1024px and below) */
 @media screen and (max-width: 1024px) {
   .footer-container {
-    background-color: #333; /* Dark background */
+    background-color: #fff; /* Background color */
     padding: 20px;
-    color: #fff; /* White text */
+    color: #333; /* Text color */
   }
 
   .footer-content {
