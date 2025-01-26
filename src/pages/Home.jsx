@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import { MdFavorite, MdFavoriteBorder, MdNavigateNext } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md"; // Removed MdNavigateNext as it's not used
 import { ToastContainer, toast } from "react-toastify";
-import { GrFormPrevious } from "react-icons/gr";
 import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -19,7 +18,7 @@ import {
   removeFromFavorites,
 } from "../app/reducers/favoritesSlice";
 import useHorizontalScroll from "../hooks/useHorizontalScroll";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const Loader = () => (
   <div className="loader">
@@ -41,16 +40,15 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [hoveredProduct, setHoveredProduct] = useState({ id: null, index: 0 });
-  const [hoverInterval, setHoverInterval] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [totalPages, setTotalPages] = useState(1);
 
   const { images } = slider;
   const categoriesSubNavbarScroll = useHorizontalScroll();
 
   // Pagination States
-  const productsPerPage = 30; // Set to 30
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const productsPerPage = 30;
 
   useEffect(() => {
     dispatch(fetchSliderImages());
@@ -63,12 +61,8 @@ const Home = () => {
 
   useEffect(() => {
     setFilteredProducts(products);
-    setTotalPages(Math.ceil(products.length / productsPerPage)); // Set total pages after products are loaded
+    setTotalPages(Math.ceil(products.length / productsPerPage));
   }, [products]);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   const isFavorite = (productId) =>
     Array.isArray(favorites) && favorites.includes(productId);
@@ -83,22 +77,17 @@ const Home = () => {
     }
   };
 
-  const handleMouseEnter = (product) => {
-    if (product.media && product.media.length > 1) {
-      let index = 0;
-      const interval = setInterval(() => {
-        setHoveredProduct({
-          id: product._id,
-          index: (index + 1) % product.media.length,
-        });
-        index++;
-      }, 500);
-      setHoverInterval(interval);
+  const handleMouseEnter = (productId, index) => {
+    // Apply hover effect only if the product has more than one image
+    if (
+      productId &&
+      products.find((prod) => prod._id === productId)?.images.length > 1
+    ) {
+      setHoveredProduct({ id: productId, index });
     }
   };
 
   const handleMouseLeave = () => {
-    clearInterval(hoverInterval);
     setHoveredProduct({ id: null, index: 0 });
   };
 
@@ -114,7 +103,7 @@ const Home = () => {
           )
         : products;
       setFilteredProducts(results);
-      setTotalPages(Math.ceil(results.length / productsPerPage)); // Update total pages based on search results
+      setTotalPages(Math.ceil(results.length / productsPerPage));
       setLoading(false);
     }, 1000);
   };
@@ -128,7 +117,7 @@ const Home = () => {
           : products.filter((product) => product.categoryName === categoryId);
       setFilteredProducts(results);
       setSelectedCategory(categoryId);
-      setTotalPages(Math.ceil(results.length / productsPerPage)); // Update total pages based on category filter
+      setTotalPages(Math.ceil(results.length / productsPerPage));
       setLoading(false);
     }, 1000);
   };
@@ -140,20 +129,19 @@ const Home = () => {
     indexOfLastProduct
   );
 
-  // Wrap handleScroll with useCallback to avoid creating a new function on every render
   const handleScroll = useCallback(() => {
     const bottom =
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight;
     if (bottom && currentPage < totalPages) {
-      paginate(currentPage + 1);
+      setCurrentPage((prevPage) => prevPage + 1);
     }
   }, [currentPage, totalPages]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]); // Now `handleScroll` is included in dependencies
+  }, [handleScroll]);
 
   return (
     <div className="home pag">
@@ -162,7 +150,7 @@ const Home = () => {
           dots={true}
           infinite={true}
           speed={500}
-          slidesToShow={2} // Show two images per row
+          slidesToShow={2}
           slidesToScroll={1}
           autoplay={true}
           autoplaySpeed={3000}
@@ -171,13 +159,13 @@ const Home = () => {
             {
               breakpoint: 1024,
               settings: {
-                slidesToShow: 2, // Two slides on medium screens
+                slidesToShow: 2,
               },
             },
             {
               breakpoint: 768,
               settings: {
-                slidesToShow: 1, // One slide on smaller screens
+                slidesToShow: 1,
               },
             },
           ]}
@@ -192,14 +180,15 @@ const Home = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src={`https://api.mhbstore.com/${slide.image}`} // Dynamic image URL
-                alt={slide.altText} // Alt text for the image
+                src={`https://api.mhbstore.com/${slide.image}`}
+                alt={slide.altText}
                 className="carousel-image"
               />
             </motion.div>
           ))}
         </Slider>
       </div>
+
       <section
         className="categori-sub-navbar-container"
         ref={categoriesSubNavbarScroll.containerRef}
@@ -213,7 +202,6 @@ const Home = () => {
             >
               All
             </button>
-
             {categories.map((category) => (
               <div key={category._id} className="category-item">
                 <button
@@ -229,24 +217,21 @@ const Home = () => {
                     alt={category.categoryName}
                     className="category-image"
                   />
-                  {/* {category.categoryName} */}
                 </button>
               </div>
             ))}
           </nav>
-          <section className="search-section">
-            <form className="search-form" onSubmit={handleSearch}>
-              <input
-                type="text"
-                placeholder="Search for products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <span className="search-icon">
-                <IoSearchOutline />
-              </span>
-            </form>
-          </section>
+          <form className="search-form" onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Search for products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <span className="search-icon">
+              <IoSearchOutline />
+            </span>
+          </form>
         </div>
       </section>
 
@@ -265,7 +250,11 @@ const Home = () => {
               <motion.div
                 key={product._id}
                 className="product-cart"
-                onMouseEnter={() => handleMouseEnter(product)}
+                onMouseEnter={() => {
+                  if (product.images.length > 1) {
+                    handleMouseEnter(product._id, 1);
+                  }
+                }}
                 onMouseLeave={handleMouseLeave}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -299,7 +288,6 @@ const Home = () => {
                     alt={product.productName}
                     className="product-image"
                   />
-
                   <div className="product-info">
                     <h5 className="product-name">{product.productName}</h5>
                     <div className="rating">
@@ -333,36 +321,8 @@ const Home = () => {
           )}
         </div>
 
-        {/* Pagination Controls */}
-        <div className="pagination">
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="pagination-button previous"
-          >
-            <GrFormPrevious className="pagination-icon" /> Previous
-          </button>
-
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => paginate(index + 1)}
-              className={`pagination-button ${
-                currentPage === index + 1 ? "active" : ""
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="pagination-button next"
-          >
-            Next <MdNavigateNext className="pagination-icon" />
-          </button>
-        </div>
+        {/* Show Loader when loading more products */}
+        {loading && <Loader />}
       </section>
 
       <ToastContainer autoClose={500} />
