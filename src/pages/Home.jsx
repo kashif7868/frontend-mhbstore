@@ -102,7 +102,6 @@ const Home = () => {
     setHoveredProduct({ id: null, index: 0 });
   };
 
-
   const handleSearch = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -163,7 +162,7 @@ const Home = () => {
           dots={true}
           infinite={true}
           speed={500}
-          slidesToShow={2}  // Show two images per row
+          slidesToShow={2} // Show two images per row
           slidesToScroll={1}
           autoplay={true}
           autoplaySpeed={3000}
@@ -304,7 +303,6 @@ const Home = () => {
                   <div className="product-info">
                     <h5 className="product-name">{product.productName}</h5>
                     <div className="rating">
-                      Review
                       {[...Array(5)].map((_, i) => (
                         <FaStar
                           key={i}
@@ -315,6 +313,7 @@ const Home = () => {
                           }
                         />
                       ))}
+                      <span> (Review)</span>
                     </div>
                     {product.stock <= 0 && (
                       <div className="out-of-stock">Product out of stock</div>

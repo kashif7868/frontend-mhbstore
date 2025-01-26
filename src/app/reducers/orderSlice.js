@@ -5,7 +5,7 @@ export const postOrder = createAsyncThunk(
   'order/postOrder',
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://api.mhbstore.com /api/orders', {
+      const response = await fetch('https://api.mhbstore.com/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

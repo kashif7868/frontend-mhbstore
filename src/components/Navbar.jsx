@@ -15,7 +15,6 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import PearlsIcon from "../assets/icons/peeral.png";
 import { BiCoinStack } from "react-icons/bi";
 import { CiLogout } from "react-icons/ci";
-import { LiaCartPlusSolid } from "react-icons/lia";
 import "react-toastify/dist/ReactToastify.css";
 import {
   fetchCategories,
@@ -212,7 +211,7 @@ const Navbar = () => {
         </div>
         <div className="mobile-nav-item">
           {cartCount > 0 && <span className="cart-badge-dot">{cartCount}</span>}
-          <LiaCartPlusSolid className="icon" onClick={handleCartClick} />
+          <HiOutlineShoppingBag className="icon" onClick={handleCartClick} />
           <span>Cart</span>
         </div>
         <div

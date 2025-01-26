@@ -320,6 +320,9 @@ const ProductView = () => {
               className="related-product-card"
               onClick={() => navigate(`/product-view-details/${related._id}`)}
             >
+              {product.discount && (
+                <span className="retated-sale-tag">SALE {product.discount}%</span>
+              )}
               <img
                 src={`https://api.mhbstore.com/${related.images[0]}`}
                 alt={related.productName}
@@ -327,17 +330,8 @@ const ProductView = () => {
               />
               <div className="related-product-info">
                 <p className="related-product-name">{related.productName}</p>
-                <div className="related-product-price">
-                  {related.oldPrice && (
-                    <p className="related-product-old-price">
-                      <del>₨ {related.oldPrice}</del>
-                    </p>
-                  )}
-                  <p className="related-product-current-price">
-                    ₨ {related.price}
-                  </p>
-                </div>
                 <div className="related-product-rating">
+                 
                   {[...Array(5)].map((_, i) => (
                     <FaStar
                       key={i}
@@ -346,6 +340,17 @@ const ProductView = () => {
                       }
                     />
                   ))}
+                   <span> (Review)</span>
+                </div>
+                <div className="related-product-price">
+                  <p className="related-product-current-price">
+                    ₨ {related.price}
+                  </p>
+                  {related.oldPrice && (
+                    <p className="related-product-old-price">
+                      <del>₨ {related.oldPrice}</del>
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
