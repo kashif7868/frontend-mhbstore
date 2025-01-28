@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { clearCart } from "../../app/actions/actionsCart";
 import { postOrder } from "../../app/reducers/orderSlice";
-import Swal from "sweetalert2";
-import "react-phone-number-input/style.css";
 import "../../assets/css/checkout.css";
 import cityData from "../../data/cityData.json";
 
@@ -40,7 +38,9 @@ const CheckoutPage = () => {
   });
 
   const [paymentMethod] = useState("bank");
-  const [selectedBank, setSelectedBank] = useState("bankAlfalah"); // Default to Bank Alfalah
+  const [selectedBank, setSelectedBank] = useState(""); // Initially empty (Choose Bank)
+
+  const [isLoading, setIsLoading] = useState(false); // Track loading state
 
   const subtotal = cart.reduce(
     (acc, item) => acc + (item.salePrice || item.price) * (item.qty || 1),
@@ -57,20 +57,10 @@ const CheckoutPage = () => {
       !userDetails.address ||
       !userDetails.city
     ) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please fill out all required fields!",
-      });
       return;
     }
 
     if (paymentMethod === "bank" && !selectedBank) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please select a bank!",
-      });
       return;
     }
 
@@ -85,56 +75,40 @@ const CheckoutPage = () => {
       grandTotal,
     };
 
+    setIsLoading(true); // Start loading when order is placed
+
     // Dispatch the action to post the order
     dispatch(postOrder(orderData));
 
     if (orderStatus === "loading") {
-      return; // Prevent further submissions while loading
+      return;
     }
 
-    // Simulate a delay for 10 seconds before showing success
-    setTimeout(() => {
-      if (orderStatus === "succeeded") {
-        // Success alert with grand total
-        Swal.fire({
-          icon: "success",
-          title: "Order Placed!",
-          text: `Your order has been successfully placed. Total amount: PKR ${grandTotal.toFixed(
-            2
-          )}. You will receive a confirmation soon.`,
-        });
+    if (orderStatus === "succeeded") {
+      dispatch(clearCart());
+      setUserDetails({
+        name: "",
+        mobile: "",
+        email: "",
+        country: "Pakistan",
+        province: "Punjab",
+        city: "",
+        postalCode: "",
+        apartment: "",
+        address: "",
+        shipToDifferentAddress: false,
+        deliveryAddress: "",
+      });
 
-        // Clear cart after placing the order
-        dispatch(clearCart());
+      setSelectedBank(""); // Reset bank selection
 
-        // Reset user details to initial state to empty the form
-        setUserDetails({
-          name: "",
-          mobile: "",
-          email: "",
-          country: "Pakistan",
-          province: "Punjab",
-          city: "",
-          postalCode: "",
-          apartment: "",
-          address: "",
-          shipToDifferentAddress: false,
-          deliveryAddress: "",
-        });
-
-        // Clear selected bank
-        setSelectedBank("bankAlfalah");
-
-        // Navigate to the order details page
+      // After the order is successfully placed, navigate to the order details page
+      setTimeout(() => {
         navigate(`/order-details/${orderId}`);
-      } else if (orderStatus === "failed") {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: orderError || "An error occurred while placing your order.",
-        });
-      }
-    }, 5000); // Delay of 5 seconds (5000ms)
+      }, 2000); // Delay of 2 seconds
+    } else if (orderStatus === "failed") {
+      console.log(orderError || "An error occurred while placing your order.");
+    }
   };
 
   const handleInputChange = (e) => {
@@ -148,6 +122,15 @@ const CheckoutPage = () => {
       shipToDifferentAddress: e.target.checked,
     }));
   };
+
+  // useEffect to track the order status and handle loading state
+  useEffect(() => {
+    if (orderStatus === "loading") {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [orderStatus]);
 
   return (
     <div className="checkout-container-main">
@@ -203,7 +186,7 @@ const CheckoutPage = () => {
           </label>
         </div>
 
-        {/* Province */}
+        {/* Province Dropdown */}
         <div className="billing-form-group">
           <select
             name="province"
@@ -223,7 +206,7 @@ const CheckoutPage = () => {
           </label>
         </div>
 
-        {/* City */}
+        {/* City Dropdown */}
         <div className="billing-form-group">
           <select
             name="city"
@@ -261,7 +244,7 @@ const CheckoutPage = () => {
           </label>
         </div>
 
-        {/* Phone */}
+        {/* Phone Number */}
         <div className="billing-form-group">
           <input
             type="text"
@@ -424,11 +407,11 @@ const CheckoutPage = () => {
           </h3>
         </div>
 
-        {/* Bank Transfer Details */}
+        {/* Payment Method */}
         <div className="payment-method-container">
           <h3>Payment Method</h3>
           <label>
-            <span>Direct Bank Transfer</span>
+            <span>Choose Bank</span>
           </label>
           <div className="bank-selection">
             <select
@@ -436,71 +419,73 @@ const CheckoutPage = () => {
               value={selectedBank}
               onChange={(e) => setSelectedBank(e.target.value)}
             >
+              <option value="">Choose Bank</option>
               <option value="bankAlfalah">Bank Alfalah</option>
               <option value="MeezanBank">Meezan Bank</option>
               <option value="jazzCash">JazzCash</option>
               <option value="easyPaisa">EasyPaisa</option>
             </select>
 
-            <div className="bank-details-container">
-              {selectedBank === "bankAlfalah" && (
+            {/* Display selected bank details */}
+            {selectedBank && (
+              <div className="bank-details-container">
+                {selectedBank === "bankAlfalah" && (
+                  <p>
+                    <strong>Bank Alfalah</strong>
+                    <br />
+                    Account Name: MHB Store <br />
+                    Account Number: 01611009686863
+                  </p>
+                )}
+                {selectedBank === "MeezanBank" && (
+                  <p>
+                    <strong>Meezan Bank</strong>
+                    <br />
+                    Account Name: MHB Store <br />
+                    Account Number: 02540108520675
+                  </p>
+                )}
+                {selectedBank === "jazzCash" && (
+                  <p>
+                    <strong>JazzCash</strong>
+                    <br />
+                    Account Name: Mazhar Hussain <br />
+                    Account Number: 0300-4645503
+                  </p>
+                )}
+                {selectedBank === "easyPaisa" && (
+                  <p>
+                    <strong>EasyPaisa</strong>
+                    <br />
+                    Account Name: Mazhar Hussain <br />
+                    Account Number: 0300-4645503
+                  </p>
+                )}
                 <p>
-                  <strong>Bank Alfalah</strong>
-                  <br />
-                  Account Name: MHB Store <br />
-                  Account Number: 01611009686863
+                  <strong>Instructions:</strong>
+                  <ol>
+                    <li>Make your payment directly into our bank account.</li>
+                    <li>
+                      Share the screenshot of the transaction on{" "}
+                      <strong>Whatsapp</strong> (+92300-4233378).
+                    </li>
+                    <li>
+                      Please share your <strong>Order ID</strong> as Payment
+                      Reference.
+                    </li>
+                  </ol>
                 </p>
-              )}
-              {selectedBank === "MeezanBank" && (
-                <p>
-                  <strong>Meezan Bank</strong>
-                  <br />
-                  Account Name: MHB Store <br />
-                  Account Number: 02540108520675
-                </p>
-              )}
-              {selectedBank === "jazzCash" && (
-                <p>
-                  <strong>JazzCash</strong>
-                  <br />
-                  Account Name: Mazhar Hussain <br />
-                  Account Number:0300-4645503
-                </p>
-              )}
-              {selectedBank === "easyPaisa" && (
-                <p>
-                  <strong>EasyPaisa</strong>
-                  <br />
-                  Account Name: Mazhar Hussain <br />
-                  Account Number: 0300-4645503
-                </p>
-              )}
-              <p>
-                <strong>Instructions:</strong>
-                <ol>
-                  <li>Make your payment directly into our bank account.</li>
-                  <li>
-                    Share the screenshot of the transaction on{" "}
-                    <strong>Whatsapp</strong> (+92300-4233378).
-                  </li>
-                  <li>
-                    Please share your <strong>Order ID</strong> as Payment
-                    Reference.
-                  </li>
-                </ol>
-              </p>
-            </div>
+              </div>
+            )}
           </div>
         </div>
 
         <button
           className="place-order-button"
           onClick={handlePlaceOrder}
-          disabled={orderStatus === "loading"} // Disable the button when order is being placed
+          disabled={isLoading} // Disable the button when order is being placed
         >
-          {orderStatus === "loading"
-            ? `Placing Order...`
-            : `Place Order (Total: PKR ${grandTotal.toFixed(2)})`}
+          {isLoading ? `Placing Order...` : `Place Order (Total: PKR ${grandTotal.toFixed(2)})`}
         </button>
       </div>
     </div>

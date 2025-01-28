@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../app/reducers/cartSlice";
 import favoritesReducer from "./reducers/favoritesSlice";
 import userSlice from "../app/reducers/userPearlsSlice";
+import bannerReducer from './reducers/bannerSlice';
 import sliderReducer from "./reducers/sliderSlice";
 import certificationsReducer from "./reducers/cartificationsSlice";
 import partnersReducer from "./reducers/partnerSlice";
@@ -17,6 +18,7 @@ const store = configureStore({
     cart: cartReducer,
     favorites: favoritesReducer,
     user: userSlice,
+    banners: bannerReducer,
     slider: sliderReducer,
     certifications: certificationsReducer,
     partners: partnersReducer,

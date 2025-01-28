@@ -1,0 +1,16 @@
+  <!-- {categories.map((category) => (
+              <motion.div
+                key={category.id}
+                className="carousel-slide"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <div
+                  onClick={() => handleCategoryClick(category.id)} // Using category.id to trigger category click
+                >
+                  <div className="carousel-title">{category.title}</div>
+                </div>
+              </motion.div>
+            ))} -->
