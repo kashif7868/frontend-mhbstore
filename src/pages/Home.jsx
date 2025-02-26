@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md"; // Removed MdNavigateNext as it's not used
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
@@ -110,6 +110,7 @@ const Home = () => {
 
   const handleCategoryFilterChange = (categoryId) => {
     setLoading(true);
+    setCurrentPage(1); // Reset to the first page when changing category
     setTimeout(() => {
       const results =
         categoryId === "All"
@@ -170,7 +171,7 @@ const Home = () => {
             },
           ]}
         >
-          {images.map((slide) => (
+          {images?.map((slide) => (
             <motion.div
               key={slide._id}
               className="carousel-slide"
@@ -202,7 +203,7 @@ const Home = () => {
             >
               All
             </button>
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <div key={category._id} className="category-item">
                 <button
                   className={

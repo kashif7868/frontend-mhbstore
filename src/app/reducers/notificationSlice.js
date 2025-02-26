@@ -7,7 +7,7 @@ export const createNotification = createAsyncThunk(
   'notification/create',
   async (notificationData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('https://api.mhbstore.com/api/notifications/create', notificationData);
+      const response = await axios.post('http://localhost:8000/api/notifications/create', notificationData);
       return response.data.notification;
     } catch (error) {
       return rejectWithValue(error.response.data.message);

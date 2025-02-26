@@ -14,7 +14,7 @@ export const getAllProducts = createAsyncThunk(
   "product/getAllProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://api.mhbstore.com/api/products");
+      const response = await axios.get("http://localhost:8000/api/products");
       return response.data?.data || []; // If there's no `data` field, return an empty array
     } catch (error) {
       return rejectWithValue(error.response ? error.response.data : error.message);
@@ -27,7 +27,7 @@ export const getProductById = createAsyncThunk(
   "product/getProductById",
   async (productId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://api.mhbstore.com/api/products/${productId}`);
+      const response = await axios.get(`http://localhost:8000/api/products/${productId}`);
       return response.data; // Return the specific product
     } catch (error) {
       return rejectWithValue(error.response ? error.response.data : error.message);

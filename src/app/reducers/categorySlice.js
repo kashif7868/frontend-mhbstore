@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchCategories = createAsyncThunk(
   'category/fetchCategories',
   async () => {
-    const response = await axios.get('https://api.mhbstore.com/api/categories');
+    const response = await axios.get('http://localhost:8000/api/categories');
     return response.data.data.results || []; 
   }
 );
@@ -14,7 +14,7 @@ export const fetchCategories = createAsyncThunk(
 export const fetchCategoryById = createAsyncThunk(
   'category/fetchCategoryById',
   async (categoryId) => {
-    const response = await axios.get(`https://api.mhbstore.com/api/categories/${categoryId}`);
+    const response = await axios.get(`http://localhost:8000/api/categories/${categoryId}`);
     return response.data.data || {}; // Adjust based on actual response structure
   }
 );

@@ -3,22 +3,22 @@ import axios from 'axios';
 
 // Async actions for handling API calls
 export const fetchUserPeerals = createAsyncThunk('user/fetchPeerals', async (userId) => {
-  const response = await axios.get(`https://api.mhbstore.com/api/peerals/${userId}`);
+  const response = await axios.get(`http://localhost:8000/api/peerals/${userId}`);
   return response.data.peerals; // Return the peerals from API response
 });
 
 export const addSignUpBonus = createAsyncThunk('user/addSignUpBonus', async (userId) => {
-  const response = await axios.post('https://api.mhbstore.com/api/peerals/signup-bonus', { userId });
+  const response = await axios.post('http://localhost:8000/api/peerals/signup-bonus', { userId });
   return response.data.peerals; // Return the updated peerals
 });
 
 export const addShoppingBonus = createAsyncThunk('user/addShoppingBonus', async ({ userId, spentAmount }) => {
-  const response = await axios.post('https://api.mhbstore.com/api/peerals/shopping-bonus', { userId, spentAmount });
+  const response = await axios.post('http://localhost:8000/api/peerals/shopping-bonus', { userId, spentAmount });
   return response.data.peerals; // Return the updated peerals
 });
 
 export const redeemPeerals = createAsyncThunk('user/redeemPeerals', async ({ userId, redeemAmount }) => {
-  const response = await axios.post('https://api.mhbstore.com/api/peerals/redeem', { userId, redeemAmount });
+  const response = await axios.post('http://localhost:8000/api/peerals/redeem', { userId, redeemAmount });
   return response.data.peerals; // Return the updated peerals after redemption
 });
 
